@@ -1,6 +1,9 @@
 # pycharm
 .idea
 
+# python
+venv
+
 # openpose and tf-openpose repositories
 algorithms_files/*
 !algorithms_files/.gitkeep

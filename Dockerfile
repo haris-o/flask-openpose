@@ -54,6 +54,7 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # openpose
 RUN cd ./algorithms_files/openpose && \
+mkdir build && \
 cd ./build && \
 cmake ../ -DBUILD_PYTHON=ON -DGPU_MODE=CPU_ONLY -DOPT_ARCH_FLAGS="" -DUSE_CUDNN=OFF -DUSE_MKL=OFF && \
 make -j`nproc` && \

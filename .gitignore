@@ -1,0 +1,13 @@
+# pycharm
+.idea
+
+# openpose and tf-openpose repositories
+algorithms_files/*
+!algorithms_files/.gitkeep
+
+# static files
+*.jpg
+*.jpeg
+*.png
+*.gif
+

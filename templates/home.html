@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Body analysis service</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 card">
+            <form action="/analyse" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <select name="algorithm" class="form-control">
+                        <option value="openpose">Openpose (default)</option>
+                        <option value="tf-openpose">Tensorflow Openpose</option>
+                    </select>
+                    <br/>
+
+                    <input type="file" name="image" class="form-control">
+                    <br/>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

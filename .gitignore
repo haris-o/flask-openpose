@@ -6,6 +6,7 @@ venv
 
 # openpose and tf-openpose repositories
 algorithms_files/*
+openpose_models
 !algorithms_files/.gitkeep
 
 # static files
@@ -13,4 +14,7 @@ algorithms_files/*
 *.jpeg
 *.png
 *.gif
+
+# log files
+*.log
 

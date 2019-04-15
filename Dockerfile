@@ -50,6 +50,7 @@ RUN pip install --upgrade numpy protobuf opencv-python
 RUN pip3 install --upgrade numpy protobuf opencv-python
 
 # install requirements
+RUN pip install --trusted-host pypi.python.org cython
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # openpose

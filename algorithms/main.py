@@ -3,11 +3,11 @@ import os
 import uuid
 
 import cv2
-
 from flask import url_for
 
-from algorithms.tensorflow_openpose import get_points_from_image as tf_from_image
 from algorithms.basic_openpose import get_points_from_image as op_from_image
+from algorithms.basic_openpose import get_points_from_video as op_from_video
+from algorithms.tensorflow_openpose import get_points_from_image as tf_from_image
 
 STATIC_FOLDER = './static'
 logger = logging.getLogger(__name__)
@@ -38,6 +38,29 @@ def analyse_image(algorithm, image_path):
         logger.debug('Final image path: {}'.format(result_path))
 
         return True, result_path
+    except Exception as e:
+        logger.error('An error occurred while analysing image')
+        logger.error(e, exc_info=True)
+        print(e)
+        return False, str(e)
+
+
+def analyse_video(algorithm, video_path, results_per_second):
+    try:
+        logger.debug(
+            'Analysing path: {} with algorithm: {}, and RPS: {}'.format(video_path, algorithm, results_per_second))
+
+        # if algorithm == 'tf-openpose':
+        #     data = tf_from_image(video_path)
+        if algorithm == 'openpose':
+            data = op_from_video(video_path, results_per_second)
+        else:
+            raise KeyError('Specified algorithm not supported.')
+
+        logger.debug('Algorithm finished, result:')
+        logger.debug(data)
+
+        return True, data
     except Exception as e:
         logger.error('An error occurred while analysing image')
         logger.error(e, exc_info=True)

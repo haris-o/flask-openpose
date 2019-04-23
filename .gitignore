@@ -14,7 +14,9 @@ openpose_models
 *.jpeg
 *.png
 *.gif
+*.json
+*.mkv
 
 # log files
-*.log
+*.log*
 

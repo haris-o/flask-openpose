@@ -68,12 +68,16 @@ def analyse():
             else:
                 # an error occurred, show the error message
                 logger.debug('An error occurred in the algorithm: {}'.format(result))
-                return result
+                data = {'error': result}
+                res = Response(data, status=400, mimetype='application/json')
+                return res
     except Exception as e:
         logger.error('An error occurred while analysing image')
         logger.error(e, exc_info=True)
         print(e)
-        return 'An error occurred, try again'
+        data = {'error': result}
+        res = Response(data, status=400, mimetype='application/json')
+        return res
 
 
 @app.route('/analyse_video', methods=['POST'])
@@ -111,13 +115,16 @@ def analyse_video_endpoint():
             else:
                 # an error occurred, show the error message
                 logger.debug('An error occurred in the algorithm: {}'.format(result))
-                res = {'error': result}
-                return res, 400, 'application/json'
+                data = {'error': result}
+                res = Response(data, status=400, mimetype='application/json')
+                return res
     except Exception as e:
         logger.error('An error occurred while analysing video')
         logger.error(e, exc_info=True)
         print(e)
-        return 'An error occurred, try again'
+        data = {'error': 'An error occurred, try again'}
+        res = Response(data, status=500, mimetype='application/json')
+        return res
 
 
 def allowed_images(filename):

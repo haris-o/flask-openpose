@@ -50,8 +50,6 @@ def analyse_video(algorithm, video_path, results_per_second):
         logger.debug(
             'Analysing path: {} with algorithm: {}, and RPS: {}'.format(video_path, algorithm, results_per_second))
 
-        # if algorithm == 'tf-openpose':
-        #     data = tf_from_image(video_path)
         if algorithm == 'openpose':
             data = op_from_video(video_path, results_per_second)
         else:
